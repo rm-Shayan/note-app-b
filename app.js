@@ -16,12 +16,7 @@ app.use(morgan('dev'));
 // Gzip Compression (Responses ka size chota karne ke liye)
 app.use(compression());
 // Cross-Origin Resource Sharing (Frontend connectivity ke liye)
-app.use(cors({
-    origin: `${process.env.FRONTEND_URL}`, // Aapke frontend ka exact address
-    credentials: true,               // Cookies/Headers allow karne ke liye
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(cors());
 // Body parsers (JSON aur URL encoded data handle karne ke liye)
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
