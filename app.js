@@ -16,7 +16,10 @@ app.use(morgan('dev'));
 // Gzip Compression (Responses ka size chota karne ke liye)
 app.use(compression());
 // Cross-Origin Resource Sharing (Frontend connectivity ke liye)
-app.use(cors());
+app.use(cors({
+  origin: "https://note-app-f-seven.vercel.app",
+  credentials: true
+}));
 // Body parsers (JSON aur URL encoded data handle karne ke liye)
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
