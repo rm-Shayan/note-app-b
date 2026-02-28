@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 app.use(compression());
 // Cross-Origin Resource Sharing (Frontend connectivity ke liye)
 app.use(cors({
-    origin: "https://note-app-f-seven.vercel.app/", // Aapke frontend ka exact address
+    origin: `${process.env.FRONTEND_URL}`, // Aapke frontend ka exact address
     credentials: true,               // Cookies/Headers allow karne ke liye
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
