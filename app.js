@@ -16,8 +16,20 @@ app.use(morgan('dev'));
 // Gzip Compression (Responses ka size chota karne ke liye)
 app.use(compression());
 // Cross-Origin Resource Sharing (Frontend connectivity ke liye)
+
+const allowedOrigins = [
+  "https://note-app-f-seven.vercel.app",
+  "http://localhost:5173"
+];
+
 app.use(cors({
-  origin: "https://note-app-f-seven.vercel.app",
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 // Body parsers (JSON aur URL encoded data handle karne ke liye)
